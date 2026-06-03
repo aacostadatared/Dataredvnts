@@ -5,12 +5,12 @@ export default function CalendarView() {
   const { user } = useAuth();
 
   const calendarUrls: Record<string, string> = {
-    andres: 'https://calendar.google.com/calendar/embed?src=andres@datared.com',
-    jefa: 'https://calendar.google.com/calendar/embed?src=jefa@datared.com',
-    ingeniero: 'https://calendar.google.com/calendar/embed?src=ingeniero@datared.com',
+    'andres@datared.com': 'https://calendar.google.com/calendar/embed?src=andres@datared.com',
+    'ana@datared.com': 'https://calendar.google.com/calendar/embed?src=ana@datared.com',
+    'ingeniero@datared.com': 'https://calendar.google.com/calendar/embed?src=ingeniero@datared.com',
   };
 
-  const calendarUrl = user ? calendarUrls[user.username] : '';
+  const calendarUrl = user ? calendarUrls[user.email] : '';
 
   return (
     <div className="w-full h-full flex flex-col">
@@ -23,7 +23,7 @@ export default function CalendarView() {
           <div>
             <h1 className="text-2xl font-bold text-foreground">Mi Calendario</h1>
             <p className="text-sm text-muted-foreground mt-0.5">
-              Calendario personal de {user?.name} — Outlook Web
+              Calendario personal de {user?.full_name} — Outlook Web
             </p>
           </div>
         </div>

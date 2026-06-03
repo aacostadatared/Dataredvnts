@@ -377,7 +377,7 @@ export default function MeetingNotesView() {
                 >
                   <option value="">Sin asignar</option>
                   {allUsers.map(u => (
-                    <option key={u.username} value={u.username}>{u.name}</option>
+                    <option key={u.email} value={u.email}>{u.full_name}</option>
                   ))}
                 </select>
               </div>

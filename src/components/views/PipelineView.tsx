@@ -206,7 +206,7 @@ export default function PipelineView() {
               </thead>
               <tbody className="divide-y divide-border">
                 {filteredForecast.map((item) => {
-                  const exec = allUsers.find(u => u.username === item.assigned_executive);
+                  const exec = allUsers.find(u => u.email === item.assigned_executive);
                   const config = stageConfig[item.stage];
                   return (
                     <tr key={item.id} className="hover:bg-accent/50 transition-colors group">
@@ -226,8 +226,8 @@ export default function PipelineView() {
                       </td>
                       <td className="px-4 py-3">
                         {exec ? (
-                          <span className={cn('text-xs px-2 py-1 rounded-full font-medium text-white inline-block', exec.color)}>
-                            {exec.name}
+                          <span className={cn('text-xs px-2 py-1 rounded-full font-medium text-white inline-block', exec.avatar_color)}>
+                            {exec.full_name}
                           </span>
                         ) : (
                           <span className="text-xs text-muted-foreground">Sin asignar</span>
@@ -270,7 +270,7 @@ export default function PipelineView() {
                 {/* Cards */}
                 <div className="flex-1 space-y-3 overflow-y-auto">
                   {items.map((item) => {
-                    const exec = allUsers.find(u => u.username === item.assigned_executive);
+                    const exec = allUsers.find(u => u.email === item.assigned_executive);
                     return (
                       <div key={item.id} className="bg-card border border-border rounded-lg p-3 hover:shadow-md transition-shadow group">
                         <div className="flex items-start justify-between gap-2 mb-2">
@@ -298,8 +298,8 @@ export default function PipelineView() {
 
                         {/* Ejecutivo */}
                         {exec && (
-                          <div className={cn('text-xs px-2 py-1 rounded font-medium text-white text-center', exec.color)}>
-                            {exec.name}
+                          <div className={cn('text-xs px-2 py-1 rounded font-medium text-white text-center', exec.avatar_color)}>
+                            {exec.full_name}
                           </div>
                         )}
 
@@ -380,7 +380,7 @@ export default function PipelineView() {
                 <select value={form.assigned_executive} onChange={(e) => setForm(f => ({ ...f, assigned_executive: e.target.value }))} className="w-full px-3 py-2 text-sm bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring">
                   <option value="">Sin asignar</option>
                   {allUsers.map(u => (
-                    <option key={u.username} value={u.username}>{u.name}</option>
+                    <option key={u.email} value={u.email}>{u.full_name}</option>
                   ))}
                 </select>
               </div>
