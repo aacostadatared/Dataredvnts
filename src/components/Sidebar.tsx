@@ -37,6 +37,7 @@ interface SidebarProps {
 const navItems = [
   { id: 'home' as NavItem, label: 'Inicio', icon: LayoutDashboard },
   { id: 'clients' as NavItem, label: 'Pipeline de Ventas', icon: Users },
+  { id: 'active_clients' as NavItem, label: 'Clientes Activos', icon: Users },
   { id: 'visits' as NavItem, label: 'Visitas Diarias', icon: MapPin },
   { id: 'meetings' as NavItem, label: 'Notas de Reuniones', icon: FileText },
   { id: 'calendar' as NavItem, label: 'Mi Calendario', icon: Calendar },

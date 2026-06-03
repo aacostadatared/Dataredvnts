@@ -5,12 +5,13 @@ import Sidebar from './components/Sidebar';
 import LoginScreen from './components/LoginScreen';
 import Homepage from './components/views/Homepage';
 import PipelineView from './components/views/PipelineView';
+import ActiveClientsView from './components/views/ActiveClientsView';
 import DailyVisitsView from './components/views/DailyVisitsView';
 import MeetingNotesView from './components/views/MeetingNotesView';
 import SalesPitchView from './components/views/SalesPitchView';
 import CalendarView from './components/views/CalendarView';
 
-export type NavItem = 'home' | 'clients' | 'visits' | 'meetings' | 'pitch' | 'calendar';
+export type NavItem = 'home' | 'clients' | 'active_clients' | 'visits' | 'meetings' | 'pitch' | 'calendar';
 
 function AppContent() {
   const [activeView, setActiveView] = useState<NavItem>('home');
@@ -36,6 +37,7 @@ function AppContent() {
         <div className="min-h-full">
           {activeView === 'home' && <Homepage onNavigate={setActiveView} />}
           {activeView === 'clients' && <PipelineView />}
+          {activeView === 'active_clients' && <ActiveClientsView onNavigate={setActiveView} />}
           {activeView === 'visits' && <DailyVisitsView />}
           {activeView === 'meetings' && <MeetingNotesView />}
           {activeView === 'pitch' && <SalesPitchView />}

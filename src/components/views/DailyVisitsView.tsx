@@ -59,6 +59,18 @@ export default function DailyVisitsView() {
 
   useEffect(() => {
     fetchVisits();
+    // Check for prefilled data from Active Clients quick link
+    const prefilledStr = localStorage.getItem('prefilledVisit');
+    if (prefilledStr) {
+      const prefilled = JSON.parse(prefilledStr);
+      setForm(f => ({
+        ...f,
+        client_name: prefilled.client_name || f.client_name,
+        contact_person: prefilled.contact_person || f.contact_person,
+      }));
+      setShowForm(true);
+      localStorage.removeItem('prefilledVisit');
+    }
   }, []);
 
   async function fetchVisits() {
